@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg-primary: #f4f4f4;
+            --bg-secondary: white;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --gold: #B8860B;
+            --gold-dark: #8B6914;
+        }
+        body.dark-mode {
+            --bg-primary: #000000;
+            --bg-secondary: #000000;
+            --text-primary: #e8e8e8;
+            --text-secondary: #b8b8b8;
+        }
+        body.dark-mode .product {
+            border: none;
+        }
+        body.dark-mode .product:hover {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+        body {
+           font-family: 'Cinzel', serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            direction: ltr;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+
+/* ====== HEADER FIX ====== */
+
+header { background-image: url('bk.jpg'); background-color: black; background-repeat: no-repeat; background-size: contain;
+ background-position: center top;
+  display: flex; flex-direction: column; /* ✅ العناصر تحت بعض */
+   align-items: center;
+    justify-content: center;
+     height: 200px; text-align: center; } /* اسم الفندق تحت اللوغو */
+      #title { color: #ffffff; font-size: 40px; font-weight: bold; margin-top: 100px; /* 🔥 ينزل تحت اللوغو */ }
+.dark-mode-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--gold);
+    color: white;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dark-mode-toggle:hover {
+    background-color: var(--gold-dark);
+    transform: scale(1.08);
+}
+header {
+    position: relative;
+}
+.language-switcher {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.language-switcher button {
+    background-color: #B8860B
+;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    margin: 0 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 5px;
+   
+}
+.language-switcher button:hover {
+    background-color:#8B6914;
+    transform: scale(1.12) translateY(-8px);
+    box-shadow: 0 12px 30px rgba(184, 134, 11, 0.4);
+    transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+.language-switcher button.active {
+    background-color: #B8860B;
+}
+
+        .menu {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--bg-secondary);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+
+
+        .category {
+            margin-bottom: 40px;
+        }
+        .category h2 {
+    border-bottom: none;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    color: var(--gold);
+    text-align: center;
+    font-size: 32px;
+}
+
+       
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+        }
+        .product {
+            background-color: var(--bg-secondary);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+                .product img {
+                        width: 100%;
+                        height: 250px;
+                        object-fit: cover;
+                        border-radius: 5px;
+                        filter: blur(8px);
+                        transform: scale(1.02);
+                        transition: filter 350ms ease, transform 350ms ease;
+                        will-change: transform, filter;
+                        display: block;
+                }
+                .product img.loaded {
+                        filter: blur(0);
+                        transform: scale(1);
+                }
+
+        .product:hover img {
+    transform: scale(1.08); /* تكبير خفيف */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+        .product h3 {
+            margin: 10px 0;
+            color: var(--text-primary);
+        }
+        .product p {
+            margin: 5px 0;
+            color: var(--text-secondary);
+        }
+        .price {
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--gold);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #000000;
+            color: var(--gold);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        /* RTL for Arabic and Persian */
+        .rtl {
+            direction: rtl;
+        }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--gold-dark);
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            z-index: 999;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        #backToTop:hover {
+            background-color: var(--gold-dark);
+            transform: translateY(-3px) scale(1.08);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+        }
+        #backToTop.show {
+            display: flex;
+        }
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+ 
+
+
+
+    <header>
+        <button class="dark-mode-toggle" id="darkModeBtn" title="Toggle Dark Mode">🌙</button>
+        <h1 id="title"></h1>
+        <div class="language-switcher">
+            <button id="en" class="active">English</button>
+            <button id="ar">العربية</button>
+            <button id="fa">فارسی</button>
+        </div>
+    </header>
+
+    <div class="menu">
+        <div class="category">
+            <h2 id="hot-drinks-title">Hot Drinks</h2>
+            <div class="products" id="hot-drinks">
+                <!-- Products will be populated by JS -->
+            </div>
+        </div>
+        <div class="category">
+            <h2 id="juices-title">Juices</h2>
+            <div class="products" id="juices">
+                <!-- Products will be populated by JS -->
+            </div>
+        </div>
+        <div class="category">
+            <h2 id="mojito-title">Mojito</h2>
+            <div class="products" id="mojito">
+                <!-- Products will be populated by JS -->
+            </div>
+        </div>
+        <div class="category">
+            <h2 id="shisha-title">Shisha</h2>
+            <div class="products" id="shisha">
+                <!-- Products will be populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p id="footer-text"> © 2023 Coffee Burj Karbala. All rights reserved.</p>
+    </footer>
+    <button id="backToTop" title="Back to Top">↑</button> 
+    <script>
+        function getImage(img) {
+  return img.replace(".jpg", ".webp");
+}
+
+        // Language data
+        const translations = {
+            en: {
+                title: "",
+                "hot-drinks-title": "Hot Drinks",
+                "juices-title": "Juices",
+                "mojito-title": "Mojito",
+                "shisha-title": "Shisha",
+                "footer-text": "© 2026 Coffee Burj Karbala. All rights reserved.",
+                products: {
+                    "hot-drinks": [
+                        { name: "Iraqi tea", desc: "Black tea", price: "IQD 2.000", img: "tea.jpg" },
+                        { name: "Karak tea", desc: "Black tea with milk", price: "IQD 3.000", img: "teak.jpg" },
+                        { name: "Turkish coffee", desc: "Ground coffee", price: "IQD 5.000", img: "coffe.jpg" },
+                        { name: "Chocolate coffee", desc: "Hot chocolate", price: "IQD 5.000", img: "coffee.jpg" },
+                        { name: "Instant coffee", desc: "Hot Nescafe", price: "IQD 5.000", img: "nscafe.jpg" },
+                        { name: "Latte", desc: "Foamy coffee", price: "IQD 5.000", img: "cap.jpg" }
+                    ],
+                    juices: [
+                        { name: "Watermelon Juice", desc: "Fresh watermelon", price: "IQD 5.000", img: "bat.jpg" },
+                        { name: "Orange juice", desc: "Fresh orange", price: "IQD 5.000", img: "brt.jpg" },
+                        { name: "Banana milk", desc: "Creamy fresh", price: "IQD 5.000", img: "moz.jpg" }
+                    ],
+                    mojito: [
+                        { name: "Blue Mojito", desc: "Fresh blue", price: "IQD 5.000", img: "blo.jpg" },
+                        { name: "Blueberry Mojito", desc: "Fresh berry", price: "IQD 5.000", img: "blo2.jpg" },
+                        { name: "Lemon Mojito", desc: "Fresh citrus", price: "IQD 5.000", img: "lem.jpg" },
+                        { name: "Mint Mojito", desc: "Fresh mint", price: "IQD 5.000", img: "mo.jpg" },
+                         { name: "Passion Fruit Mojito", desc: "Tropical fresh", price: "IQD 5.000", img: "ban.jpg" },
+                         { name: "Pineapple Strawberry Mojito", desc: "Tropical sweet", price: "IQD 5.000", img: "fr.jpg" }
+                    ],
+                    shisha: [
+                        { name: "Apple", desc: "Sweet apple flavor", price: "IQD 8.000", img: "tf.jpg" },
+                        { name: "Mint ", desc: "Refreshing mint taste", price: "IQD 8.000", img: "na.jpg" },
+                        { name: "Lemon Mint", desc: "Fresh citrus", price: "IQD 8.000", img: "nan.jpg" },
+                        { name: "Grape ", desc: "Juicy grape flavor", price: "IQD 8.000", img: "enb.jpg" },
+                         { name: "Bubble Mint Gum", desc: "Sweet fresh", price: "IQD 8.000", img: "alk.jpg" },
+                         { name: "English Mix", desc: "Strong flavor", price: "IQD 10.000", img: "en.jpg" }
+                    ]
+                    
+                }
+            },
+            ar: {
+
+                "hot-drinks-title": "المشروبات الساخنة",
+                "juices-title": "العصائر",
+                "mojito-title": "الموهيتو",
+                "shisha-title": "الأراكيل",
+                "footer-text": "© 2026 كوفي برج كربلا. جميع الحقوق محفوظة.",
+                products: {
+                    "hot-drinks": [
+                        { name: "شاي عراقي", desc: "شاي اسود", price: "IQD 2.000", img: "tea.jpg" },
+                        { name: "شاي كرك", desc: "شاي أسود بالحليب", price: "IQD 3.000", img: "teak.jpg" },
+                        { name: "قهوة تركية", desc: "قهوة مطحونة", price: "IQD 5.000", img: "coffe.jpg" },
+                        { name: "قهوة شوكلاته", desc: "شوكولاته ساخنه", price: "IQD 5.000", img: "coffee.jpg" },
+                        { name: "قهوة سريعة التحضير", desc: "قهوة ساخنة", price: "IQD 5.000", img: "nscafe.jpg" },
+                        { name: "قهوة بحليب", desc: "قهوة رغوية", price: "IQD 5.000", img: "cap.jpg" }
+                    ],
+                    juices: [
+                        { name: "عصير بطيخ", desc: "بطيخ طازج", price: "IQD 5.000", img: "bat.jpg" },
+                        { name: "عصير برتقال", desc: "برتقال طازج", price: "IQD 5.000", img: "brt.jpg" },
+                        { name: "موز وحليب", desc: "كريمي منعش", price: "IQD 5.000", img: "moz.jpg" }
+                    ],
+                    mojito: [
+                         { name: "موهيتو بلو", desc: "منعش ازرق", price: "IQD 5.000", img: "blo.jpg" },
+                         { name: "موهيتو بلوبري", desc: "توت ازرق", price: "IQD 5.000", img: "blo2.jpg" },
+                          { name: "موهيتو ليمون", desc: "منعش بارد", price: "IQD 5.000", img: "lem.jpg" },
+                         { name: "موهيتو نعناع", desc: "منعش بارد", price: "IQD 5.000", img: "mo.jpg" },
+                         { name: "موهيتو باشن فروت", desc: "استوائي منعش", price: "IQD 5.000", img: "ban.jpg" },
+                         { name: "موهيتو فراوله اناناس", desc: "استوائي حلو", price: "IQD 5.000", img: "fr.jpg" }
+],
+
+                    shisha: [
+                        { name: " تفاح", desc: "نكهة تفاح حلوة", price: "IQD 8.000", img: "tf.jpg" },
+                        { name: " نعناع", desc: "طعم نعناع منعش", price: "IQD 8.000", img: "na.jpg" },
+                          { name: "ليمون ونعناع", desc: "طعم ليمون ونعناع المنعش", price: "IQD 8.000", img: "nan.jpg" },
+                        { name: " عنب", desc: "نكهة عنب", price: "IQD 8.000", img: "enb.jpg" },
+                        { name: " علك نعناع", desc: "نكهة علك نعناع", price: "IQD 8.000", img: "alk.jpg" },
+                         { name: " انكليزي", desc: "نكهة انكليزي", price: "IQD 10.000", img: "en.jpg" }
+                       ]
+                }
+            },
+            fa: {
+                "hot-drinks-title": "نوشیدنی‌های گرم",
+                "juices-title": "آبمیوه‌ها",
+                "mojito-title": "موخیتو",
+                "shisha-title": "شی‌شا",
+                "footer-text": "© 2026 کافی برج کربلا. تمامی حقوق محفوظ است.",
+                products: {
+                    "hot-drinks": [
+                        { name: "چای عراقی", desc: "چای سیاه", price: "IQD 2.000", img: "tea.jpg" },
+                        { name: "چای کرک", desc: "چای سیاه با شیر", price: "IQD 3.000", img: "teak.jpg" },
+                        { name: "قهوه ترک", desc: "قهوه آسیاب‌شده", price: "IQD 5.000", img: "coffe.jpg" },
+                        { name: "قهوه شکلاتی", desc: "شکلات داغ", price: "IQD 5.000", img: "coffee.jpg" },
+                        { name: "قهوه فوری", desc: "نسکافه داغ", price: "IQD 5.000", img: "nscafe.jpg" },
+                        { name: "قهوه با شیر", desc: "قهوه کف‌دار", price: "IQD 5.000", img: "cap.jpg" }
+                    ],
+                    juices: [
+                        { name: "آب هندوانه", desc: "هندوانه تازه", price: "IQD 5.000", img: "bat.jpg" },
+                        { name: "آب پرتقال", desc: "پرتقال تازه", price: "IQD 5.000", img: "brt.jpg" },
+                        { name: "موز با شیر", desc: "خامه‌ای تازه", price: "IQD 5.000", img: "moz.jpg" }
+                    ],
+                    mojito: [
+                      
+                      { name: "موخیتو آبی", desc: "تازه آبی", price: "IQD 5.000", img: "blo.jpg" },
+                        { name: "بلوبری", desc: "توت آبی", price: "IQD 5.000", img: "blo2.jpg" },
+                          { name: "موخیتو نعنا", desc: "نعنا تازه", price: "IQD 5.000", img: "mo.jpg" },
+                          { name:"موخیتو لیمو", desc: "ترش تازه", price: "IQD 5.000", img: "lem.jpg" },
+                           { name: "پشن فروت", desc: "استوایی تازه", price: "IQD 5.000", img: "ban.jpg" },
+                           { name: "موخیتو آناناس توت فرنگی", desc: "استوایی شیرین", price: "IQD 5.000", img: "fr.jpg" }
+                     ],
+                    shisha: [
+                        { name: " سیب", desc: "طعم سیب شیرین", price: "IQD 8.000", img: "tf.jpg" },
+                        { name: " نعنا", desc: "طعم نعنا تازه کننده", price: "IQD 8.000", img: "na.jpg" },
+                        { name: " لیمو نعنا", desc: "تازه ترش", price: "IQD 8.000", img: "nan.jpg" },
+                        { name: " انگور", desc: "طعم انگور", price: "IQD 8.000", img: "enb.jpg" },
+                        { name: "آدامس نعنا", desc: "شیرین تازه", price: "IQD 8.000", img: "alk.jpg" },
+                        { name: "طعم انگلیسی", desc: "طعم قوی", price: "IQD 10.000", img: "en.jpg" },
+                        
+                        
+                    ]
+                        
+                    
+                }
+            }
+        };
+
+        let currentLang = 'en';
+        let isFirstLoad = true;
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.getElementById('title').textContent = translations[lang].title;
+            document.getElementById('hot-drinks-title').textContent = translations[lang]['hot-drinks-title'];
+            document.getElementById('juices-title').textContent = translations[lang]['juices-title'];
+            document.getElementById('mojito-title').textContent = translations[lang]['mojito-title'];
+            document.getElementById('shisha-title').textContent = translations[lang]['shisha-title'];
+            document.getElementById('footer-text').textContent = translations[lang]['footer-text'];
+
+            // Update body direction
+            document.body.className = (lang === 'ar' || lang === 'fa') ? 'rtl' : '';
+
+            // Update active button
+            document.querySelectorAll('.language-switcher button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(lang).classList.add('active');
+
+            // Populate products
+            ['hot-drinks', 'juices', 'mojito', 'shisha'].forEach(category => {
+                const container = document.getElementById(category);
+                container.innerHTML = '';
+                translations[lang].products[category].forEach(product => {
+                    const productDiv = document.createElement('div');
+                    productDiv.className = 'product';
+                    productDiv.innerHTML = `
+                     <img src="${getImage(product.img)}" 
+     onerror="this.src='${product.img}'" 
+     alt="${product.name}" 
+     loading="lazy">
+
+<h3>${product.name}</h3>
+<p>${product.desc}</p>
+<p class="price">${product.price}</p>
+
+                    `;
+                    container.appendChild(productDiv);
+                });
+                });
+                // enhance products (animations, hover, image load)
+                enhanceProducts();
+                // animate UI only on first load
+                if (isFirstLoad) {
+                    animateUI();
+                    isFirstLoad = false;
+                }
+            }
+
+        // Event listeners for language buttons
+        // helpers: enhance products and animate
+        function enhanceProducts() {
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            document.querySelectorAll('.product').forEach(product => {
+                // hover micro-interaction
+                product.addEventListener('mouseenter', () => {
+                    if (prefersReduced) return;
+                    gsap.to(product, { scale: 1.03, duration: 0.18, ease: 'power2.out' });
+                });
+                product.addEventListener('mouseleave', () => {
+                    if (prefersReduced) return;
+                    gsap.to(product, { scale: 1, duration: 0.18, ease: 'power2.out' });
+                });
+
+                const img = product.querySelector('img');
+                if (!img) return;
+                // ensure fallback to jpg if webp missing
+                img.addEventListener('error', () => {
+                    try { img.src = img.src.replace('.webp', '.jpg'); } catch(e){}
+                });
+                const onImageLoad = () => {
+                    img.classList.add('loaded');
+                    if (!window.gsap) return;
+                    if (prefersReduced) return;
+                    gsap.fromTo(img, { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' });
+                };
+                if (img.complete && img.naturalWidth !== 0) {
+                    onImageLoad();
+                } else {
+                    img.addEventListener('load', onImageLoad, { once: true });
+                }
+            });
+        }
+
+        function animateUI() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            if (typeof gsap === 'undefined') return;
+            gsap.from('#title', { duration: 0.8, y: -18, opacity: 0, ease: 'power2.out' });
+            gsap.from('.language-switcher button', { duration: 0.6, y: -10, opacity: 0, stagger: 0.08, ease: 'power2.out' });
+            gsap.from('.product', { duration: 0.7, y: 18, opacity: 0, stagger: 0.06, ease: 'power3.out' });
+        }
+        
+
+        document.getElementById('en').addEventListener('click', () => setLanguage('en'));
+        document.getElementById('ar').addEventListener('click', () => setLanguage('ar'));
+        document.getElementById('fa').addEventListener('click', () => setLanguage('fa'));
+
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Dark Mode Toggle
+        const darkModeBtn = document.getElementById('darkModeBtn');
+        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+        if (isDarkMode) {
+            document.body.classList.add('dark-mode');
+            darkModeBtn.textContent = '☀️';
+        }
+        darkModeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isNowDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isNowDark);
+            darkModeBtn.textContent = isNowDark ? '☀️' : '🌙';
+        });
+
+        // Initialize with English
+        setLanguage('en');
+    </script>
+</body>
+</html>
