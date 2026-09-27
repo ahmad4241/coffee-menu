@@ -55,7 +55,7 @@ img{display:block;max-width:100%}
 .card{border:1px solid var(--line);background:var(--sf);border-radius:20px;padding:6px 6px 12px;text-align:start;display:flex;flex-direction:column;box-shadow:var(--shadow);transition:transform .2s}
 .card:active{transform:scale(.97)}
 .ph{position:relative;aspect-ratio:1;border-radius:15px;overflow:hidden;background:var(--sf2)}
-.ph img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+.ph img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .2s}
 .ph img.ok{opacity:1}
 .card b{display:block;margin:10px 8px 0;font-size:14.5px;font-weight:600;line-height:1.45}
 .card span{display:block;margin:1px 8px 0;font-size:12px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -219,7 +219,7 @@ img{display:block;max-width:100%}
 .soc a:active,.soc a:hover{background:#D6A63A;color:#000;border-color:#D6A63A}
 .soc .ic{width:19px;height:19px}
 .fbot{display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:24px;padding-top:16px;border-top:1px solid #ffffff12;font-size:11.5px;color:#F3EDE266}
-.fby{display:inline-flex;align-items:center;gap:6px;margin-top:2px;color:#D6A63A;text-decoration:none;font-weight:600;font-size:12px}.fby .ic{width:15px;height:15px}
+.fby{margin-top:2px;font-size:12px;color:#F3EDE280}.fby a{color:#D6A63A;text-decoration:none;font-weight:600}
 @media (prefers-reduced-motion:reduce){.lg-s{fill-opacity:1;stroke-width:0;stroke-dashoffset:0}.hname,.hsub,.hbar,.lgw::before{opacity:1;transform:none}.lg-sw{display:none}}
 
 </style>
@@ -265,7 +265,7 @@ img{display:block;max-width:100%}
       <a class="fr" id="fTel"><span class="fi"><svg class="ic"><use href="#i-phone"/></svg></span><span class="fx"><small data-t="telL"></small><b dir="ltr" id="fTelN"></b></span><span class="fa" data-t="call"></span></a>
     </div>
     <div class="soc" id="soc"></div>
-    <div class="fbot"><span data-t="rights"></span><a class="fby" href="https://ahmadalhallak.com/services" rel="noopener">Ahmad</a></div>
+    <div class="fbot"><span data-t="rights"></span><span class="fby">Menu by <a href="https://ahmadalhallak.com/services" rel="noopener">Ahmad</a></span></div>
   </div>
 </footer>
 
@@ -320,6 +320,7 @@ var M=[
 var C={phone:"+9647812111231",phoneShow:"0781 211 1231",map:"https://www.google.com/maps/search/?api=1&query=Burj%20Karbala%20hotel&query_place_id=ChIJRfIAZwBrWRURtcpeBWaeEZo",whatsapp:"https://wa.me/9647812111231",manager:"9647812111231",review:"https://search.google.com/local/writereview?placeid=ChIJRfIAZwBrWRURtcpeBWaeEZo",instagram:"",facebook:"",tiktok:""};
 var $=function(i){return document.getElementById(i)},root=document.documentElement;
 function f(n){return n.toLocaleString("en-US")}
+function th(it){return "t/"+it.img.replace(".jpg",".webp")}function fu(it){return "f/"+it.img.replace(".jpg",".webp")}
 function ic(n){return '<svg class="ic"><use href="#'+n+'"/></svg>'}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
@@ -338,8 +339,8 @@ function render(){
  document.title=(L==="en"?"Coffee Burj Karbala · Menu":t.name+" · "+(L==="fa"?"منو":"المنيو"));
  $("tabs").innerHTML=M.map(function(c){return '<button class="tab" type="button" data-c="'+c.id+'">'+ic("k-"+c.id)+esc(c[L])+'</button>'}).join("");
  var k=0,P=ALL.filter(function(x){return x.pop}).sort(function(a,b){return a.pop-b.pop});
- var strip='<section class="pops" aria-label="'+t.popT+'"><div class="poph">'+ic("i-star")+esc(t.popT)+'</div><div class="prow">'+P.map(function(it){return '<button class="pc" type="button" data-i="'+ALL.indexOf(it)+'"><span class="pt"><img src="'+it.img+'" alt="" decoding="async"></span><span><b>'+esc(it[L][0])+'</b><small>'+ic("k-"+it.cat.id)+esc(it.cat[L])+'</small><em>'+t.cur(it.p)+'</em></span></button>'}).join("")+'</div></section>';
- $("menu").innerHTML=strip+M.map(function(c){return '<section class="sec" id="c-'+c.id+'"><div class="sh"><span class="ci">'+ic("k-"+c.id)+'</span><div><h2>'+esc(c[L])+'</h2><small>'+c.items.length+" "+t.items+'</small></div></div><div class="grid">'+c.items.map(function(it){var i=ALL.indexOf(it);return '<button class="card" type="button" data-i="'+i+'"><div class="ph">'+(it.pop?'<span class="badge">'+ic("i-star")+esc(t.popT)+'</span>':'')+'<img src="'+it.img+'" alt="'+esc(it[L][0])+'" loading="'+(k++<4?"eager":"lazy")+'" decoding="async"></div><b>'+esc(it[L][0])+'</b><span>'+esc(it[L][1])+'</span><em>'+t.cur(it.p)+'</em></button>'}).join("")+'</div></section>'}).join("");
+ var strip='<section class="pops" aria-label="'+t.popT+'"><div class="poph">'+ic("i-star")+esc(t.popT)+'</div><div class="prow">'+P.map(function(it){return '<button class="pc" type="button" data-i="'+ALL.indexOf(it)+'"><span class="pt"><img src="'+th(it)+'" alt="" width="60" height="60" decoding="async"></span><span><b>'+esc(it[L][0])+'</b><small>'+ic("k-"+it.cat.id)+esc(it.cat[L])+'</small><em>'+t.cur(it.p)+'</em></span></button>'}).join("")+'</div></section>';
+ $("menu").innerHTML=strip+M.map(function(c){return '<section class="sec" id="c-'+c.id+'"><div class="sh"><span class="ci">'+ic("k-"+c.id)+'</span><div><h2>'+esc(c[L])+'</h2><small>'+c.items.length+" "+t.items+'</small></div></div><div class="grid">'+c.items.map(function(it){var i=ALL.indexOf(it);return '<button class="card" type="button" data-i="'+i+'"><div class="ph">'+(it.pop?'<span class="badge">'+ic("i-star")+esc(t.popT)+'</span>':'')+'<img src="'+th(it)+'" alt="'+esc(it[L][0])+'" width="420" height="420" loading="'+(k++<6?"eager":"lazy")+'" decoding="async"'+(k<=6?' fetchpriority="high"':'')+'></div><b>'+esc(it[L][0])+'</b><span>'+esc(it[L][1])+'</span><em>'+t.cur(it.p)+'</em></button>'}).join("")+'</div></section>'}).join("");
  [].forEach.call(document.querySelectorAll(".ph img"),function(im){if(im.complete&&im.naturalWidth)im.classList.add("ok");else{im.onload=function(){im.classList.add("ok")};im.onerror=function(){im.classList.add("ok")}}});
  cur=null;spy();
 }
@@ -355,8 +356,10 @@ function spy(){var y=document.querySelector(".nav").offsetHeight+40,act=M[0].id;
 addEventListener("scroll",spy,{passive:true});
 $("top").onclick=function(){scrollTo({top:0,behavior:"smooth"})};
 /* sheet */
-function openItem(it){var t=T[L];$("sImg").src=it.img;$("sImg").alt=it[L][0];$("sN").textContent=it[L][0];$("sO").textContent=L==="en"?it.ar[0]:it.en[0];$("sP").textContent=t.cur(it.p);$("sD").textContent=it[L][1];$("sheet").classList.add("on");$("sheet").setAttribute("aria-hidden","false");root.style.overflow="hidden"}
+function openItem(it){var t=T[L];$("sImg").src=th(it);$("sImg").src=fu(it);$("sImg").alt=it[L][0];$("sN").textContent=it[L][0];$("sO").textContent=L==="en"?it.ar[0]:it.en[0];$("sP").textContent=t.cur(it.p);$("sD").textContent=it[L][1];$("sheet").classList.add("on");$("sheet").setAttribute("aria-hidden","false");root.style.overflow="hidden"}
 function closeItem(){$("sheet").classList.remove("on");$("sheet").setAttribute("aria-hidden","true");root.style.overflow=""}
+function pre(e){var c=e.target.closest&&e.target.closest(".card,.pc");if(c){var im=new Image();im.src=fu(ALL[+c.dataset.i])}}
+$("menu").addEventListener("touchstart",pre,{passive:true});$("menu").addEventListener("mouseover",pre);
 $("menu").onclick=function(e){var c=e.target.closest(".card,.pc");if(c)openItem(ALL[+c.dataset.i])};
 $("sX").onclick=closeItem;document.querySelector("#sheet .bd").onclick=closeItem;
 addEventListener("keydown",function(e){if(e.key==="Escape"){closeItem();lm(false);$("rsh").classList.remove("on");root.style.overflow=""}});

@@ -1,0 +1,6 @@
+/t/*
+  Cache-Control: public, max-age=604800
+/f/*
+  Cache-Control: public, max-age=604800
+/*.jpg
+  Cache-Control: public, max-age=604800
