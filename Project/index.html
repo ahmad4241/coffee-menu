@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl" data-theme="dark">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -219,7 +219,7 @@ img{display:block;max-width:100%}
 .soc a:active,.soc a:hover{background:#D6A63A;color:#000;border-color:#D6A63A}
 .soc .ic{width:19px;height:19px}
 .fbot{display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:24px;padding-top:16px;border-top:1px solid #ffffff12;font-size:11.5px;color:#F3EDE266}
-.fby a{color:#D6A63A;text-decoration:none;font-weight:600}
+.fby{display:inline-flex;align-items:center;gap:6px;margin-top:2px;color:#D6A63A;text-decoration:none;font-weight:600;font-size:12px}.fby .ic{width:15px;height:15px}
 @media (prefers-reduced-motion:reduce){.lg-s{fill-opacity:1;stroke-width:0;stroke-dashoffset:0}.hname,.hsub,.hbar,.lgw::before{opacity:1;transform:none}.lg-sw{display:none}}
 
 </style>
@@ -230,7 +230,7 @@ img{display:block;max-width:100%}
 <symbol id="k-juice" viewBox="0 0 24 24"><path d="M6.5 7h11l-1.3 13.5H7.8z"/><path d="M6.9 11.5h10.2"/><path d="M13.5 7l2-4.5h2.5"/></symbol>
 <symbol id="k-mojito" viewBox="0 0 24 24"><path d="M6 5h12l-1.5 15.5h-9z"/><path d="M9.5 13.5c1.5-3 4-3.5 5.5-3-1 2.5-3 3.8-5.5 3z"/><path d="M9.5 13.5l2.5-1.8"/><path d="M14 5l1.5-3"/></symbol>
 <symbol id="k-shisha" viewBox="0 0 24 24"><path d="M9 3h4"/><path d="M11 3v3"/><path d="M8.5 6h5l-.7 3h-3.6z"/><path d="M11 9v3.5"/><path d="M11 12.5a4.5 4.5 0 1 0 .01 0"/><path d="M14.2 14.5c3 0 5.8 1 5.8 4"/><path d="M9 21.5h4"/></symbol>
-<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.5 5.3 3.5 8.5s-1.1 6.1-3.5 8.5c-2.4-2.4-3.5-5.3-3.5-8.5s1.1-6.1 3.5-8.5z"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8L3.5 9.7l5.9-.8z"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.5 5.3 3.5 8.5s-1.1 6.1-3.5 8.5c-2.4-2.4-3.5-5.3-3.5-8.5s1.1-6.1 3.5-8.5z"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8L3.5 9.7l5.9-.8z"/></symbol><symbol id="i-code" viewBox="0 0 24 24"><path d="M8.5 7.5L4 12l4.5 4.5M15.5 7.5L20 12l-4.5 4.5M13.5 5l-3 14"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z"/></symbol>
 <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
 <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
 <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
@@ -265,7 +265,7 @@ img{display:block;max-width:100%}
       <a class="fr" id="fTel"><span class="fi"><svg class="ic"><use href="#i-phone"/></svg></span><span class="fx"><small data-t="telL"></small><b dir="ltr" id="fTelN"></b></span><span class="fa" data-t="call"></span></a>
     </div>
     <div class="soc" id="soc"></div>
-    <div class="fbot"><span data-t="rights"></span><span class="fby">Menu by <a href="https://ahmadalhallak.com" rel="noopener">Ahmad Alhallak</a></span></div>
+    <div class="fbot"><span data-t="rights"></span><a class="fby" href="https://ahmadalhallak.com" rel="noopener" aria-label="Ahmad"><svg class="ic"><use href="#i-code"/></svg>Ahmad</a></div>
   </div>
 </footer>
 
@@ -328,7 +328,7 @@ var L=get("menuLang")||((navigator.language||"").slice(0,2)==="fa"?"fa":"ar"),AL
 M.forEach(function(c){c.items.forEach(function(it){it.cat=c;ALL.push(it)})});
 /* theme */
 function applyTheme(t){root.dataset.theme=t;$("theme").innerHTML=ic(t==="dark"?"i-sun":"i-moon");document.querySelector('meta[name="theme-color"]').content="#000000"}
-applyTheme(get("menuTheme")||"dark");
+applyTheme(get("menuTheme")||"light");
 $("theme").onclick=function(){var t=root.dataset.theme==="dark"?"light":"dark";applyTheme(t);set("menuTheme",t)};
 /* render */
 function render(){
